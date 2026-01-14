@@ -69,15 +69,15 @@ jobs:
 
       # With or without debug
       - if: inputs.debug == true
-        run: echo "SPC_BUILD_DEBUG=--debug --without-micro-ext-test" >> $env:GITHUB_ENV
+        run: echo "SPC_BUILD_DEBUG=--debug" >> $env:GITHUB_ENV
       - if: inputs.prefer-pre-built == true
-        run: echo "SPC_PRE_BUILT=--prefer-pre-built --without-micro-ext-test" >> $env:GITHUB_ENV
+        run: echo "SPC_PRE_BUILT=--prefer-pre-built" >> $env:GITHUB_ENV
 
       # With target select: cli, micro or both
       - if: ${{ inputs.build-cli == true }}
-        run: echo "SPC_BUILD_CLI=--build-cli" >> $env:GITHUB_ENV
+        run: echo "SPC_BUILD_CLI=--build-cli --without-micro-ext-test" >> $env:GITHUB_ENV
       - if: ${{ inputs.build-micro == true }}
-        run: echo "SPC_BUILD_MICRO=--build-micro" >> $env:GITHUB_ENV
+        run: echo "SPC_BUILD_MICRO=--build-micro --without-micro-ext-test" >> $env:GITHUB_ENV
 
       - run: ./bin/spc doctor
 
